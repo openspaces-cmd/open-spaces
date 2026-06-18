@@ -1,10 +1,21 @@
-import { writeClient } from "@/sanity/client";
-import { isSanityConfigured } from "@/sanity/env";
+import { submitHubspotForm } from "@/lib/hubspot";
 
 export const dynamic = "force-dynamic";
 
+const STORY_FORM_GUID = process.env.HUBSPOT_STORY_FORM_GUID || "";
+
 const str = (v: unknown, max: number) =>
   typeof v === "string" ? v.trim().slice(0, max) : "";
+
+// The site's three consent checkboxes map to option values of the HubSpot
+// "Story Share Permissions" multi-checkbox property (from the form definition,
+// portal 48590777 / form 0cf5c99d…). Submitted as a semicolon-joined string of
+// the selected option values.
+const PERMISSION_VALUE = {
+  mayShare: "HnvN_djo9RzjyA4Ow-REU",
+  anonymous: "XPVG5eb2f1burPYoOw_Aw",
+  wantsFollowUp: "I-5JdCth61F9_jteaxrZL",
+} as const;
 
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
@@ -27,36 +38,32 @@ export async function POST(request: Request) {
     );
   }
 
-  const doc = {
-    _type: "story",
-    status: "submitted",
-    story,
-    name: str(body.name, 80),
-    location: str(body.location, 80),
-    email: str(body.email, 120),
-    anonymous: body.anonymous === true,
-    mayShare: body.mayShare === true,
-    wantsFollowUp: body.wantsFollowUp === true,
-    submittedAt: new Date().toISOString(),
-  };
+  const permissions = [
+    body.mayShare === true ? PERMISSION_VALUE.mayShare : null,
+    body.anonymous === true ? PERMISSION_VALUE.anonymous : null,
+    body.wantsFollowUp === true ? PERMISSION_VALUE.wantsFollowUp : null,
+  ]
+    .filter(Boolean)
+    .join(";");
 
-  // Until Sanity is connected, accept gracefully so the flow can be exercised.
-  if (!isSanityConfigured || !process.env.SANITY_API_WRITE_TOKEN) {
-    console.log("[stories] demo submission (Sanity not configured):", {
-      ...doc,
-      email: doc.email ? "<redacted>" : "",
-    });
-    return Response.json({ ok: true, demo: true });
-  }
+  // Field names match the HubSpot form's property names. Empty values are
+  // dropped by the helper. NOTE: the form currently marks `email` as required,
+  // so anonymous (no-email) submissions will be rejected until that's relaxed.
+  const result = await submitHubspotForm(
+    STORY_FORM_GUID,
+    [
+      { name: "email", value: str(body.email, 120) },
+      { name: "firstname", value: str(body.name, 80) },
+      { name: "story", value: story },
+      { name: "story_share_permissions", value: permissions },
+    ],
+    { pageName: "Open Spaces — Share Your Story" },
+  );
 
-  try {
-    await writeClient.create(doc);
-    return Response.json({ ok: true });
-  } catch (err) {
-    console.error("[stories] failed to save submission:", err);
-    return Response.json(
-      { ok: false, error: "Failed to save" },
-      { status: 500 },
-    );
-  }
+  if (result.ok) return Response.json({ ok: true });
+
+  return Response.json(
+    { ok: false, error: "Failed to save" },
+    { status: 502 },
+  );
 }
