@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Azeret_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 
 import { siteDescription, siteUrl } from "@/lib/site";
 
@@ -67,6 +68,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-ivory text-midnight">
         {children}
+        <Analytics />
       </body>
     </html>
   );
