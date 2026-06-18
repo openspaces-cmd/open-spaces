@@ -1,4 +1,6 @@
 import { submitHubspotForm } from "@/lib/hubspot";
+import { writeClient } from "@/sanity/client";
+import { isSanityConfigured } from "@/sanity/env";
 
 export const dynamic = "force-dynamic";
 
@@ -38,29 +40,59 @@ export async function POST(request: Request) {
     );
   }
 
+  const name = str(body.name, 80);
+  const location = str(body.location, 80);
+  const email = str(body.email, 120);
+  const anonymous = body.anonymous === true;
+  const mayShare = body.mayShare === true;
+  const wantsFollowUp = body.wantsFollowUp === true;
+
+  // 1) Sanity — lands as "submitted" so the couple can approve it in Studio.
+  //    This is the publishing path: nothing shows on the site until approved.
+  let sanityOk = false;
+  if (isSanityConfigured && process.env.SANITY_API_WRITE_TOKEN) {
+    try {
+      await writeClient.create({
+        _type: "story",
+        status: "submitted",
+        story,
+        name,
+        location,
+        email,
+        anonymous,
+        mayShare,
+        wantsFollowUp,
+        submittedAt: new Date().toISOString(),
+      });
+      sanityOk = true;
+    } catch (err) {
+      console.error("[stories] Sanity write failed:", err);
+    }
+  }
+
+  // 2) HubSpot — lead capture / follow-up. Field names match the form's
+  //    property names; empty values are dropped by the helper.
   const permissions = [
-    body.mayShare === true ? PERMISSION_VALUE.mayShare : null,
-    body.anonymous === true ? PERMISSION_VALUE.anonymous : null,
-    body.wantsFollowUp === true ? PERMISSION_VALUE.wantsFollowUp : null,
+    mayShare ? PERMISSION_VALUE.mayShare : null,
+    anonymous ? PERMISSION_VALUE.anonymous : null,
+    wantsFollowUp ? PERMISSION_VALUE.wantsFollowUp : null,
   ]
     .filter(Boolean)
     .join(";");
 
-  // Field names match the HubSpot form's property names. Empty values are
-  // dropped by the helper. NOTE: the form currently marks `email` as required,
-  // so anonymous (no-email) submissions will be rejected until that's relaxed.
-  const result = await submitHubspotForm(
+  const hubspot = await submitHubspotForm(
     STORY_FORM_GUID,
     [
-      { name: "email", value: str(body.email, 120) },
-      { name: "firstname", value: str(body.name, 80) },
+      { name: "email", value: email },
+      { name: "firstname", value: name },
       { name: "story", value: story },
       { name: "story_share_permissions", value: permissions },
     ],
     { pageName: "Open Spaces — Share Your Story" },
   );
 
-  if (result.ok) return Response.json({ ok: true });
+  // Succeed if the story landed in either system, so one outage never loses it.
+  if (sanityOk || hubspot.ok) return Response.json({ ok: true });
 
   return Response.json(
     { ok: false, error: "Failed to save" },
