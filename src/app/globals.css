@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Open Spaces brand palette — the 7 official brand tokens
+     (matches the design system / live brand CSS variables exactly) */
+  --color-ivory: #f9f2ea; /* brand: ivory */
+  --color-ivory-light: #fdfaf6; /* brand: extra-light-ivory */
+  --color-tan: #d9c8b5; /* brand: tan */
+  --color-camel: #bf8b3e; /* brand: gold-camel */
+  --color-midnight: #1d252d; /* brand: midnight */
+  --color-steel: #bec6c4; /* brand: steel-blue */
+  --color-stormy: #717879; /* brand: stormy-gray */
+
+  /* Supporting ink — not a brand swatch; body copy on light surfaces */
+  --color-charcoal: #3c3e40;
+
+  --color-background: var(--color-ivory);
+  --color-foreground: var(--color-midnight);
+
+  /* Type families (CSS vars set by next/font in layout.tsx) */
+  --font-display: var(--font-display-src), "Arial Narrow", sans-serif;
+  --font-body: var(--font-body-src), system-ui, sans-serif;
+  --font-mono: var(--font-mono-src), ui-monospace, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* NOTE: no global `scroll-behavior: smooth` on <html>. It makes the App
+   Router's scroll-to-top on route changes animate as a visible scroll-up
+   (page renders at the old offset, then slides to the top). For same-page
+   anchor jumps, use element.scrollIntoView({ behavior: "smooth" }) instead. */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ivory);
+  color: var(--color-midnight);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display headings: condensed, uppercase, tight */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+}
+
+/* Mono eyebrow labels */
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
 }
