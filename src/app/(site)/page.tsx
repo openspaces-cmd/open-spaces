@@ -1,14 +1,14 @@
 import Link from "next/link";
 
 import { ArticleCard } from "@/components/ArticleCard";
-import { AvailableOn } from "@/components/AvailableOn";
 import { CollectionTile } from "@/components/CollectionTile";
+import { FeaturedVideo } from "@/components/FeaturedVideo";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
+import { LatestEpisode } from "@/components/LatestEpisode";
 import { Reels } from "@/components/Reels";
 import { StartHere } from "@/components/StartHere";
 import { StoryCard } from "@/components/StoryCard";
 import { resolveCollections } from "@/lib/collections";
-import { youtubeWatchUrl } from "@/lib/youtube";
 import {
   getArticles,
   getEpisodes,
@@ -28,15 +28,12 @@ export default async function HomePage() {
 
   const latestArticles = articles.slice(0, 3);
   const featuredStories = stories.slice(0, 3);
+  const latestEpisode = episodes[0]; // getEpisodes() returns newest-first
 
   // Featured collections for the homepage "Explore by Theme" grid.
   const collections = resolveCollections(episodes, home.startHere ?? []).filter(
     (c) => c.featured,
   );
-
-  const featuredArt = home.featuredYoutubeId
-    ? `https://i.ytimg.com/vi/${home.featuredYoutubeId}/maxresdefault.jpg`
-    : null;
 
   return (
     <>
@@ -107,75 +104,16 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured — light band, bracket-framed media with the editorial pattern */}
-      {home.featuredHeading ? (
-        <section className="bg-tan">
-          <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 sm:py-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 lg:px-8 lg:py-24">
-            {featuredArt && home.featuredYoutubeId ? (
-              <a
-                href={youtubeWatchUrl(home.featuredYoutubeId)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative mx-3 block sm:mx-0"
-              >
-                <span
-                  aria-hidden
-                  className="absolute -left-3 -top-3 h-12 w-12 border-l-[3px] border-t-[3px] border-camel"
-                />
-                <span
-                  aria-hidden
-                  className="absolute -bottom-3 -right-3 h-12 w-12 border-b-[3px] border-r-[3px] border-camel"
-                />
-                <span className="block overflow-hidden rounded-sm">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={featuredArt}
-                    alt={home.featuredHeading}
-                    className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </span>
-                <span
-                  aria-hidden
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-camel/90 text-ivory-light shadow-lg transition-transform group-hover:scale-110">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </span>
-                </span>
-              </a>
-            ) : null}
+      {/* Latest Episode — newest drop, surfaced right under the hero */}
+      {latestEpisode ? <LatestEpisode episode={latestEpisode} /> : null}
 
-            <div className="text-midnight">
-              <p className="eyebrow text-camel">Featured · As heard on</p>
-              <h2 className="mt-3 font-display text-4xl text-midnight sm:text-5xl">
-                {home.featuredHeading}
-              </h2>
-              {home.featuredBody ? (
-                <p className="mt-4 max-w-md text-[15px] leading-relaxed text-charcoal">
-                  {home.featuredBody}
-                </p>
-              ) : null}
-              {home.featuredYoutubeId ? (
-                <a
-                  href={youtubeWatchUrl(home.featuredYoutubeId)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-7 inline-block rounded-sm bg-midnight px-7 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-midnight/85"
-                >
-                  Watch the Conversation
-                </a>
-              ) : null}
-              <div className="mt-7 flex flex-col gap-2.5">
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-stormy">
-                  Available on
-                </span>
-                <AvailableOn listen={settings?.listen} tone="dark" />
-              </div>
-            </div>
-          </div>
-        </section>
+      {/* Featured — the "as heard on" conversation; plays in a modal */}
+      {home.featuredHeading ? (
+        <FeaturedVideo
+          heading={home.featuredHeading}
+          body={home.featuredBody}
+          youtubeId={home.featuredYoutubeId}
+        />
       ) : null}
 
       {/* Reels */}
