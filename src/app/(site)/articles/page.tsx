@@ -75,6 +75,12 @@ export default async function ArticlesPage() {
           ))}
         </div>
       ) : null}
+
+      {articles.length === 0 ? (
+        <p className="mt-12 rounded-2xl bg-ivory-light p-8 text-sm leading-relaxed text-stormy ring-1 ring-tan/70">
+          New articles are on the way — check back soon.
+        </p>
+      ) : null}
     </section>
   );
 }

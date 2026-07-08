@@ -1,11 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import type { EpisodeListItem } from "@/sanity/queries";
-import { collectionForTag, collectionHref } from "@/lib/collections";
-import { seriesSlug } from "@/lib/series";
 
 import { EpisodeCard } from "./EpisodeCard";
 
@@ -13,6 +10,10 @@ type Filter =
   | { kind: "all" }
   | { kind: "series"; value: string }
   | { kind: "tag"; value: string };
+
+// Chips hidden from the filter row (the episodes keep the data).
+const HIDDEN_SERIES = ["Community"];
+const HIDDEN_TAGS = ["faith"];
 
 const chipBase =
   "rounded-full border px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors";
@@ -24,11 +25,16 @@ export function EpisodeBrowser({ episodes }: { episodes: EpisodeListItem[] }) {
 
   const seriesNames = useMemo(
     () =>
-      [...new Set(episodes.map((e) => e.series).filter(Boolean))] as string[],
+      ([...new Set(episodes.map((e) => e.series).filter(Boolean))] as string[]).filter(
+        (name) => !HIDDEN_SERIES.includes(name),
+      ),
     [episodes],
   );
   const tags = useMemo(
-    () => [...new Set(episodes.flatMap((e) => e.tags ?? []))].sort(),
+    () =>
+      [...new Set(episodes.flatMap((e) => e.tags ?? []))]
+        .filter((tag) => !HIDDEN_TAGS.includes(tag))
+        .sort(),
     [episodes],
   );
 
@@ -65,7 +71,9 @@ export function EpisodeBrowser({ episodes }: { episodes: EpisodeListItem[] }) {
             {name} Series
           </button>
         ))}
-        <span aria-hidden className="mx-1 h-4 w-px bg-tan" />
+        {seriesNames.length > 0 ? (
+          <span aria-hidden className="mx-1 h-4 w-px bg-tan" />
+        ) : null}
         {tags.map((tag) => (
           <button
             key={tag}
@@ -77,31 +85,6 @@ export function EpisodeBrowser({ episodes }: { episodes: EpisodeListItem[] }) {
           </button>
         ))}
       </div>
-
-      {filter.kind === "series" ? (
-        <p className="mt-4 text-sm text-stormy">
-          A {visible.length}-part series, best listened to in order.{" "}
-          <Link
-            href={collectionHref(seriesSlug(filter.value))}
-            className="text-camel underline underline-offset-2 hover:text-midnight"
-          >
-            View the collection page →
-          </Link>
-        </p>
-      ) : null}
-
-      {filter.kind === "tag" && collectionForTag(filter.value) ? (
-        <p className="mt-4 text-sm text-stormy">
-          {visible.length} episode{visible.length === 1 ? "" : "s"} in this
-          collection.{" "}
-          <Link
-            href={collectionHref(collectionForTag(filter.value)!.slug)}
-            className="text-camel underline underline-offset-2 hover:text-midnight"
-          >
-            View the {collectionForTag(filter.value)!.title} collection →
-          </Link>
-        </p>
-      ) : null}
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((episode) => (

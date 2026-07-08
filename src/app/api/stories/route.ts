@@ -9,14 +9,13 @@ const STORY_FORM_GUID = process.env.HUBSPOT_STORY_FORM_GUID || "";
 const str = (v: unknown, max: number) =>
   typeof v === "string" ? v.trim().slice(0, max) : "";
 
-// The site's three consent checkboxes map to option values of the HubSpot
+// The site's consent checkboxes map to option values of the HubSpot
 // "Story Share Permissions" multi-checkbox property (from the form definition,
 // portal 48590777 / form 0cf5c99d…). Submitted as a semicolon-joined string of
 // the selected option values.
 const PERMISSION_VALUE = {
   mayShare: "HnvN_djo9RzjyA4Ow-REU",
   anonymous: "XPVG5eb2f1burPYoOw_Aw",
-  wantsFollowUp: "I-5JdCth61F9_jteaxrZL",
 } as const;
 
 export async function POST(request: Request) {
@@ -45,7 +44,6 @@ export async function POST(request: Request) {
   const email = str(body.email, 120);
   const anonymous = body.anonymous === true;
   const mayShare = body.mayShare === true;
-  const wantsFollowUp = body.wantsFollowUp === true;
 
   // 1) Sanity — lands as "submitted" so the couple can approve it in Studio.
   //    This is the publishing path: nothing shows on the site until approved.
@@ -61,7 +59,6 @@ export async function POST(request: Request) {
         email,
         anonymous,
         mayShare,
-        wantsFollowUp,
         submittedAt: new Date().toISOString(),
       });
       sanityOk = true;
@@ -75,7 +72,6 @@ export async function POST(request: Request) {
   const permissions = [
     mayShare ? PERMISSION_VALUE.mayShare : null,
     anonymous ? PERMISSION_VALUE.anonymous : null,
-    wantsFollowUp ? PERMISSION_VALUE.wantsFollowUp : null,
   ]
     .filter(Boolean)
     .join(";");

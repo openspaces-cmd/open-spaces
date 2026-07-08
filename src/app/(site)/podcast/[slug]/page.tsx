@@ -159,9 +159,9 @@ export default async function EpisodePage(
         </p>
       ) : null}
 
-      <div className="mt-12 rounded-2xl bg-midnight px-6 py-8 text-ivory-light sm:px-10">
+      <div className="mt-12 rounded-2xl bg-midnight px-6 py-8 text-center text-ivory-light sm:px-10">
         <p className="font-display text-3xl">Have a question for us?</p>
-        <p className="mt-2 max-w-md text-sm leading-relaxed text-steel">
+        <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-steel">
           We answer listener questions on the show. Send yours and it might shape
           a future episode.
         </p>

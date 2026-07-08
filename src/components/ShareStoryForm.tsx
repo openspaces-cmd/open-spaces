@@ -25,12 +25,6 @@ export function ShareStoryForm() {
       );
       return;
     }
-    const wantsFollowUp = data.wantsFollowUp === "on";
-    if (wantsFollowUp && !String(data.email ?? "").trim()) {
-      setError("Add your email so we know where to follow up.");
-      return;
-    }
-
     setError(null);
     setStatus("submitting");
     try {
@@ -44,7 +38,6 @@ export function ShareStoryForm() {
           story,
           anonymous: data.anonymous === "on",
           mayShare: data.mayShare === "on",
-          wantsFollowUp,
           website: data.website, // honeypot
         }),
       });
@@ -86,7 +79,7 @@ export function ShareStoryForm() {
 
       <div className="flex flex-col gap-2">
         <label htmlFor="email" className={labelClass}>
-          Email <span className="text-stormy/60">(only if you&apos;d like us to follow up)</span>
+          Email <span className="text-stormy/60">(optional)</span>
         </label>
         <input id="email" name="email" type="email" maxLength={120} placeholder="you@example.com" className={inputClass} />
       </div>
@@ -125,10 +118,6 @@ export function ShareStoryForm() {
         <label className="flex items-start gap-3 text-sm text-charcoal">
           <input type="checkbox" name="anonymous" className="mt-1 accent-[#bf8b3e]" />
           If you share it, please keep me anonymous.
-        </label>
-        <label className="flex items-start gap-3 text-sm text-charcoal">
-          <input type="checkbox" name="wantsFollowUp" className="mt-1 accent-[#bf8b3e]" />
-          I&apos;d like someone from Open Spaces to follow up with me.
         </label>
         <p className="text-xs leading-relaxed text-stormy">
           Unchecked? Then your story stays just between us — it is never shared

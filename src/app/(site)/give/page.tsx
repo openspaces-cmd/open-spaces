@@ -41,7 +41,7 @@ export default function GivePage() {
           />
 
           <div className="mx-auto w-full max-w-7xl px-6 py-12 lg:px-8 lg:pb-16 lg:pt-24">
-            <div className="max-w-xl">
+            <div className="max-w-xl lg:ml-auto lg:w-1/2">
               <h1 className="font-display text-7xl text-ivory-light sm:text-8xl">
                 Give
               </h1>

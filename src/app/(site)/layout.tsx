@@ -6,8 +6,6 @@ import { getSiteSettings } from "@/sanity/queries";
 const FALLBACK_NAV = [
   { label: "About", href: "/about" },
   { label: "Podcast", href: "/podcast" },
-  { label: "Articles", href: "/articles" },
-  { label: "Stories", href: "/stories" },
   { label: "Connect", href: "/connect" },
 ];
 
