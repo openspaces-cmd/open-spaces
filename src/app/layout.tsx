@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Montserrat, Azeret_Mono } from "next/font/google";
 import localFont from "next/font/local";
@@ -70,6 +71,7 @@ export default function RootLayout({
         {children}
         <Analytics />
       </body>
+      <GoogleAnalytics gaId="G-D0X9TKX1D8" />
     </html>
   );
 }
