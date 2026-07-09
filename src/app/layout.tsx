@@ -2,6 +2,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Montserrat, Azeret_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
 import { siteDescription, siteUrl } from "@/lib/site";
@@ -70,6 +71,12 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-ivory text-midnight">
         {children}
         <Analytics />
+        {/* HubSpot tracking (portal 48590777 — the Open Spaces portal) */}
+        <Script
+          id="hs-script-loader"
+          src="https://js.hs-scripts.com/48590777.js"
+          strategy="afterInteractive"
+        />
       </body>
       <GoogleAnalytics gaId="G-D0X9TKX1D8" />
     </html>
