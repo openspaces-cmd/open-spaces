@@ -56,7 +56,7 @@ export const SECTIONS: Section[] = [
     questions: [
       { id: "q22", type: "paragraph", text: "Is there anything else you’d like to share with me?" },
       { id: "q23", type: "radio", required: true, text: "May I share an anonymous quote from your feedback to help other women find Open Spaces?", options: ["Yes", "No", "Please ask me first"] },
-      { id: "q24", type: "radio", required: false, text: "Future Open Spaces groups may have a fee. What would feel fair to pay for a 6-week group like this one?", options: ["Less than $300", "$300", "$500", "$750+"] },
+      { id: "q24", type: "radio", required: false, text: "Future Open Spaces groups may have a fee. What would feel fair to pay for a 6-week group like this one?", options: ["Less than $300", "$500", "$750", "$1000+"] },
     ],
   },
 ];
