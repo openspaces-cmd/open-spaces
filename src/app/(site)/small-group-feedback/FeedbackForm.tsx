@@ -75,17 +75,22 @@ export default function FeedbackForm() {
       return;
     }
     setStatus("sending");
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 30000); // don't hang forever on a stalled request
     try {
       const res = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" }, // simple request, no CORS preflight
         body: JSON.stringify(payload()),
+        signal: controller.signal,
       });
+      clearTimeout(timer);
       const data = await res.json().catch(() => ({}));
       if (!res.ok || data.ok === false) throw new Error();
       setStatus("sent");
       requestAnimationFrame(() => topRef.current?.scrollIntoView({ behavior: "smooth" }));
     } catch {
+      clearTimeout(timer);
       setStatus("error");
     }
   };
@@ -172,7 +177,9 @@ export default function FeedbackForm() {
 
             return (
               <fieldset key={q.id} id={`q-${q.id}`} className={s.q} aria-describedby={bad ? errId : undefined}>
-                <legend className={s.qText}>{q.text}</legend>
+                <legend className={s.qText}>
+                  {q.text} {!q.required && <span className={s.optional}>(optional)</span>}
+                </legend>
 
                 {q.type === "scale" && (
                   <>
