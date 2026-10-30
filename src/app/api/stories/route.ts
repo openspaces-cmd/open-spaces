@@ -1,3 +1,5 @@
+import { randomUUID } from "node:crypto";
+
 import { submitHubspotForm } from "@/lib/hubspot";
 import { writeClient } from "@/sanity/client";
 import { isSanityConfigured } from "@/sanity/env";
@@ -47,10 +49,13 @@ export async function POST(request: Request) {
 
   // 1) Sanity — lands as "submitted" so the couple can approve it in Studio.
   //    This is the publishing path: nothing shows on the site until approved.
+  //    The "private." id prefix hides the document (email, unapproved story)
+  //    from unauthenticated API reads; the dataset itself is public.
   let sanityOk = false;
   if (isSanityConfigured && process.env.SANITY_API_WRITE_TOKEN) {
     try {
       await writeClient.create({
+        _id: `private.${randomUUID()}`,
         _type: "story",
         status: "submitted",
         story,
