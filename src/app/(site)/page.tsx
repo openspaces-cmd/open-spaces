@@ -4,15 +4,27 @@ import { CollectionTile } from "@/components/CollectionTile";
 import { EpisodeSpotlights } from "@/components/EpisodeSpotlights";
 import { Reels } from "@/components/Reels";
 import { StartHere } from "@/components/StartHere";
+import { StoryCard } from "@/components/StoryCard";
 import { resolveCollections } from "@/lib/collections";
-import { getEpisodes, getHomeContent, getSiteSettings } from "@/sanity/queries";
+import {
+  getEpisodes,
+  getHomeContent,
+  getSiteSettings,
+  getStories,
+} from "@/sanity/queries";
 
 export default async function HomePage() {
-  const [home, episodes, settings] = await Promise.all([
+  const [home, episodes, settings, stories] = await Promise.all([
     getHomeContent(),
     getEpisodes(),
     getSiteSettings(),
+    getStories(),
   ]);
+
+  const homeStories = [
+    ...stories.filter((s) => s.featured),
+    ...stories.filter((s) => !s.featured),
+  ].slice(0, 3);
 
   const latestEpisode = episodes[0]; // getEpisodes() returns newest-first
 
@@ -107,6 +119,31 @@ export default async function HomePage() {
 
       {/* Start Here — curated path for first-time listeners */}
       <StartHere episodes={home.startHere} />
+
+      {/* Listener stories — featured first, topped up with the newest */}
+      {homeStories.length > 0 ? (
+        <section className="bg-ivory">
+          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
+            <p className="eyebrow text-camel">Belief for the impossible</p>
+            <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
+              <h2 className="font-display text-4xl text-midnight sm:text-5xl">
+                Stories From Listeners
+              </h2>
+              <Link
+                href="/stories"
+                className="font-mono text-[11px] uppercase tracking-[0.18em] text-camel hover:text-midnight"
+              >
+                All stories →
+              </Link>
+            </div>
+            <div className="mt-10 columns-1 gap-6 space-y-6 md:columns-3">
+              {homeStories.map((s) => (
+                <StoryCard key={s._id} story={s} />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* Reels */}
       <Reels reels={home.reels} heading={home.reelsHeading} />

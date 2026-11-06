@@ -269,25 +269,42 @@ export async function getArticleSlugs(): Promise<{ slug: string }[]> {
 
 // Public wall: only approved/featured stories WITH sharing consent, and only
 // public-safe fields (never email or follow-up flags).
+const publicStoryFilter = groq`_type == "story" && status in ["approved", "featured"] && mayShare == true`;
+
+const publicStoryFields = groq`
+  _id,
+  title,
+  story,
+  "name": select(anonymous == true => null, name),
+  "location": select(anonymous == true => null, location),
+  anonymous,
+  "featured": status == "featured",
+  submittedAt
+`;
+
 export async function getStories(): Promise<StoryItem[]> {
   return safeFetch(
     () =>
       client.fetch(
-        groq`*[_type == "story" && status in ["approved", "featured"] && mayShare == true]
-          | order(submittedAt desc){
-            _id,
-            title,
-            story,
-            "name": select(anonymous == true => null, name),
-            "location": select(anonymous == true => null, location),
-            anonymous,
-            "featured": status == "featured",
-            submittedAt
-          }`,
+        groq`*[${publicStoryFilter}] | order(submittedAt desc){ ${publicStoryFields} }`,
         {},
         { next: { revalidate: 60 } },
       ),
     sampleStories,
+  );
+}
+
+// Single public story for its own share page. The sample fallback applies only
+// before Sanity is configured, so a removed placeholder id can't resurface.
+export async function getStoryById(id: string): Promise<StoryItem | null> {
+  return safeFetch(
+    () =>
+      client.fetch(
+        groq`*[${publicStoryFilter} && _id == $id][0]{ ${publicStoryFields} }`,
+        { id },
+        { next: { revalidate: 60 } },
+      ),
+    isSanityConfigured ? null : (sampleStories.find((s) => s._id === id) ?? null),
   );
 }
 
