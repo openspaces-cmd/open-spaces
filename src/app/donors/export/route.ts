@@ -37,7 +37,7 @@ export async function GET(request: Request) {
       ? [
           row([
             "First name", "Last name", "Email", "Phone",
-            "Street address", "City", "State", "Zip", "Country",
+            "Street address", "City", "State", "Zip", "Country", "Address source",
             `Total ${year}`, "Gift count", "Frequency", "Monthly amount",
             "First gift", "Last gift",
           ]),
@@ -45,6 +45,7 @@ export async function GET(request: Request) {
             row([
               d.firstName, d.lastName, d.email, d.phone,
               d.address, d.city, d.state, d.zip, d.country,
+              { gift: "Checkout (latest gift)", contact: "HubSpot contact", "zip-only": "ZIP only — no street", none: "Missing" }[d.addressSource],
               d.total.toFixed(2), d.giftCount, d.frequency, d.monthlyAmount.toFixed(2),
               day(d.firstGift), day(d.lastGift),
             ]),

@@ -248,7 +248,16 @@ export default async function DonorsPage({
                     <p className="text-xs text-stormy">{d.email}</p>
                   </td>
                   <td className="max-w-[260px] px-4 py-3 text-charcoal">
-                    {donorAddress(d) || <span className="text-xs text-red-700">Missing address</span>}
+                    {d.addressSource === "gift" || d.addressSource === "contact" ? (
+                      donorAddress(d)
+                    ) : (
+                      <>
+                        {donorAddress(d) ? <span>{donorAddress(d)} </span> : null}
+                        <span className="block text-xs text-red-700">
+                          {d.addressSource === "zip-only" ? "No street address" : "Missing address"}
+                        </span>
+                      </>
+                    )}
                   </td>
                   <td className="px-4 py-3">
                     <span
@@ -277,11 +286,24 @@ export default async function DonorsPage({
         </table>
       </section>
 
+      {(() => {
+        const missing = donors.filter(
+          (d) => d.giftCount > 0 && d.addressSource !== "gift" && d.addressSource !== "contact",
+        ).length;
+        return missing > 0 ? (
+          <p className="mt-6 text-sm text-red-700">
+            {missing} of {totals.donors} donors in {year} have no street address on
+            file. Add it to their HubSpot contact record and it will show here.
+          </p>
+        ) : null;
+      })()}
+
       <p className="mt-6 text-xs leading-relaxed text-stormy">
         Live from HubSpot payments. Totals are net of refunds; failed and pending
         payments are excluded. &ldquo;Monthly&rdquo; means an active recurring
-        gift today. Addresses come from each donor&apos;s HubSpot contact record —
-        fix missing ones there before sending year-end letters.
+        gift today. Addresses come from the donor&apos;s HubSpot contact record
+        when it has one, otherwise from the billing address they entered at
+        checkout on their most recent gift.
       </p>
     </Shell>
   );
