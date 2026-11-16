@@ -10,6 +10,7 @@ const DEFAULT_NAV = [
   { label: "Podcast", href: "/podcast" },
   { label: "Articles", href: "/articles" },
   { label: "Stories", href: "/stories" },
+  { label: "Groups", href: "/groups" },
   { label: "Connect", href: "/connect" },
 ];
 
@@ -110,6 +111,16 @@ export function Footer({
             <li>
               <Link href="/booking" className={linkClass}>
                 Booking
+              </Link>
+            </li>
+            <li>
+              <Link href="/podcast/guest-application" className={linkClass}>
+                Be a Podcast Guest
+              </Link>
+            </li>
+            <li>
+              <Link href="/groups#waitlist" className={linkClass}>
+                Groups Waitlist
               </Link>
             </li>
             <li>
