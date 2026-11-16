@@ -20,6 +20,17 @@ export type Gift = {
   currency: string;
   status: string;
   donorKey: string;
+  billing: BillingAddress;
+};
+
+export type BillingAddress = {
+  name: string;
+  line1: string;
+  line2: string;
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
 };
 
 export type Donor = {
@@ -34,6 +45,8 @@ export type Donor = {
   state: string;
   zip: string;
   country: string;
+  /** Where the mailing address came from. "zip-only" = no street on file. */
+  addressSource: "gift" | "contact" | "zip-only" | "none";
   total: number;
   giftCount: number;
   firstGift: string;
@@ -190,6 +203,15 @@ export async function getDonorReport(year: number): Promise<DonorReport> {
       "hs_customer_email",
       "hs_initiated_date",
       "createdate",
+      // Billing details entered at checkout. The monthly payment link asks
+      // for a full address; the one-time link may only ask for ZIP.
+      "hs_billing_bill_to_name",
+      "hs_billing_address_line_1",
+      "hs_billing_address_line_2",
+      "hs_billing_address_city",
+      "hs_billing_address_state",
+      "hs_billing_address_zip",
+      "hs_billing_address_country",
     ],
   );
 
@@ -238,6 +260,7 @@ export async function getDonorReport(year: number): Promise<DonorReport> {
         state: s("state"),
         zip: s("zip"),
         country: s("country"),
+        addressSource: s("address") ? "contact" : "none",
         total: 0,
         giftCount: 0,
         firstGift: "",
@@ -262,6 +285,15 @@ export async function getDonorReport(year: number): Promise<DonorReport> {
       currency: String(pr.hs_currency_code ?? "USD"),
       status: String(pr.hs_latest_status ?? ""),
       donorKey: donor.key,
+      billing: {
+        name: String(pr.hs_billing_bill_to_name ?? "").trim(),
+        line1: String(pr.hs_billing_address_line_1 ?? "").trim(),
+        line2: String(pr.hs_billing_address_line_2 ?? "").trim(),
+        city: String(pr.hs_billing_address_city ?? "").trim(),
+        state: String(pr.hs_billing_address_state ?? "").trim(),
+        zip: String(pr.hs_billing_address_zip ?? "").trim(),
+        country: String(pr.hs_billing_address_country ?? "").trim(),
+      },
     };
     gifts.push(gift);
     donor.gifts.push(gift);
@@ -282,6 +314,7 @@ export async function getDonorReport(year: number): Promise<DonorReport> {
     d.firstGift = d.gifts[0]?.date ?? "";
     d.lastGift = d.gifts.at(-1)?.date ?? "";
     d.frequency = d.monthlyAmount > 0 ? "Monthly" : d.giftCount > 1 ? "Repeat" : "One-time";
+    applyBillingDetails(d);
   }
   for (const g of gifts) {
     // Month in Eastern time.
@@ -317,3 +350,35 @@ export const donorAddress = (d: Donor) =>
     .map((s) => s.trim())
     .filter(Boolean)
     .join(" ");
+
+/**
+ * Fill in the donor's mailing address (and name, if the contact has none)
+ * from what they typed at checkout. HubSpot payment links store the billing
+ * address on the payment, not the contact, so the contact is usually blank.
+ * Prefers the most recent gift with a street address; keeps a ZIP-only
+ * address when that's all there is.
+ */
+function applyBillingDetails(d: Donor) {
+  const newestFirst = [...d.gifts].reverse();
+
+  if (!d.firstName && !d.lastName) {
+    const name = newestFirst.find((g) => g.billing.name)?.billing.name ?? "";
+    const [first, ...rest] = name.split(/\s+/);
+    d.firstName = first ?? "";
+    d.lastName = rest.join(" ");
+  }
+
+  if (d.addressSource === "contact") return;
+
+  const full = newestFirst.find((g) => g.billing.line1);
+  const partial = full ?? newestFirst.find((g) => g.billing.zip || g.billing.city);
+  if (!partial) return;
+
+  const b = partial.billing;
+  d.address = [b.line1, b.line2].filter(Boolean).join(", ");
+  d.city = b.city;
+  d.state = b.state;
+  d.zip = b.zip;
+  d.country = b.country;
+  d.addressSource = full ? "gift" : "zip-only";
+}
