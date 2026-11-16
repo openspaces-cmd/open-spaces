@@ -1,6 +1,6 @@
 /* Open Spaces Design System tokens (project/tokens.css).
    Display face comes from the site's global `.font-display`; eyebrows from global `.eyebrow`.
-   Mono falls back to Azeret Mono if the site doesn't expose --font-mono. */
+   Mono: Azeret Mono, loaded by page.tsx and exposed as --font-mono. */
 .page {
   --ivory: #f9f2ea;
   --ivory-light: #fdfaf6;

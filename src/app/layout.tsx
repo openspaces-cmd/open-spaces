@@ -1,6 +1,6 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
-import { Montserrat, Azeret_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
@@ -12,13 +12,6 @@ import "./globals.css";
 // Body
 const body = Montserrat({
   variable: "--font-body-src",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Mono labels / eyebrows
-const mono = Azeret_Mono({
-  variable: "--font-mono-src",
   subsets: ["latin"],
   display: "swap",
 });
@@ -66,7 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${body.variable} ${mono.variable} ${display.variable} h-full`}
+      className={`${body.variable} ${display.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-ivory text-midnight">
         {children}

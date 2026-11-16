@@ -1,5 +1,16 @@
 import type { Metadata } from "next";
+import { Azeret_Mono } from "next/font/google";
+
 import FeedbackForm from "./FeedbackForm";
+
+// The rest of the site no longer uses a mono face; this private form keeps
+// its original design, so it loads Azeret Mono for itself only. The CSS
+// module reads it through --font-mono.
+const mono = Azeret_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Small Group Feedback | Open Spaces",
@@ -8,5 +19,9 @@ export const metadata: Metadata = {
 };
 
 export default function SmallGroupFeedbackPage() {
-  return <FeedbackForm />;
+  return (
+    <div className={mono.variable}>
+      <FeedbackForm />
+    </div>
+  );
 }
