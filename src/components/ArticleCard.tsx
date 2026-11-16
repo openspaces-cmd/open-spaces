@@ -19,10 +19,10 @@ export function ArticleCard({ article }: { article: ArticleListItem }) {
     >
       <div className="flex items-center gap-3">
         {article.category ? (
-          <span className="eyebrow text-camel">{article.category}</span>
+          <span className="tag text-camel">{article.category}</span>
         ) : null}
         {date ? (
-          <span className="font-mono text-[11px] uppercase tracking-widest text-stormy">
+          <span className="text-sm text-stormy">
             {date}
           </span>
         ) : null}
@@ -41,7 +41,7 @@ export function ArticleCard({ article }: { article: ArticleListItem }) {
         ) : (
           <span />
         )}
-        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-camel">
+        <span className="text-sm font-semibold text-camel">
           Read →
         </span>
       </div>

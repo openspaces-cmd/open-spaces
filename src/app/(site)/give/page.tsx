@@ -74,8 +74,7 @@ export default function GivePage() {
 
       {/* Support section */}
       <section className="mx-auto max-w-3xl px-5 py-16 lg:px-8 lg:py-20">
-        <p className="eyebrow text-camel">Ways to give</p>
-        <h2 className="mt-3 font-display text-5xl text-midnight">
+        <h2 className="font-display text-5xl text-midnight">
           Support Open Spaces Collective, Inc.
         </h2>
 

@@ -50,7 +50,7 @@ export default async function StoryPage(props: PageProps<"/stories/[id]">) {
       <article className="mx-auto max-w-3xl px-5 py-12 lg:px-8 lg:py-16">
         <Link
           href="/stories"
-          className="eyebrow text-charcoal transition-colors hover:text-camel"
+          className="backlink text-charcoal transition-colors hover:text-camel"
         >
           ← All stories
         </Link>
@@ -91,7 +91,7 @@ export default async function StoryPage(props: PageProps<"/stories/[id]">) {
             <h2 className="font-display text-3xl text-midnight">More Stories</h2>
             <Link
               href="/stories"
-              className="font-mono text-[11px] uppercase tracking-[0.18em] text-camel hover:text-midnight"
+              className="text-sm font-semibold text-camel hover:text-midnight"
             >
               View all →
             </Link>

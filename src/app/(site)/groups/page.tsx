@@ -31,8 +31,7 @@ export default function GroupsPage() {
   return (
     <>
       <section className="mx-auto max-w-7xl px-5 pt-16 lg:px-8 lg:pt-24">
-        <p className="eyebrow text-camel">Groups</p>
-        <h1 className="mt-3 max-w-3xl font-display text-6xl leading-[0.95] text-midnight sm:text-7xl">
+        <h1 className="max-w-3xl font-display text-6xl leading-[0.95] text-midnight sm:text-7xl">
           You don&apos;t have to walk through it alone
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal">
@@ -65,8 +64,7 @@ export default function GroupsPage() {
 
       <section id="waitlist" className="scroll-mt-24 bg-tan/30">
         <div className="mx-auto max-w-3xl px-5 py-16 lg:px-8 lg:py-20">
-          <p className="eyebrow text-camel">Waitlist</p>
-          <h2 className="mt-3 font-display text-5xl text-midnight">
+          <h2 className="font-display text-5xl text-midnight">
             Save your spot
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-charcoal">

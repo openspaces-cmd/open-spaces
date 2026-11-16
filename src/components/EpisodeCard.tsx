@@ -29,10 +29,10 @@ export function EpisodeCard({ episode }: { episode: EpisodeListItem }) {
       <div className="flex flex-1 flex-col gap-2 p-5">
         <div className="flex items-center gap-3">
           {episode.episodeNumber ? (
-            <span className="eyebrow text-camel">Ep {episode.episodeNumber}</span>
+            <span className="tag text-camel">Episode {episode.episodeNumber}</span>
           ) : null}
           {date ? (
-            <span className="font-mono text-[11px] uppercase tracking-widest text-stormy">
+            <span className="text-sm text-stormy">
               {date}
             </span>
           ) : null}

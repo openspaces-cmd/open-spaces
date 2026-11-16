@@ -94,7 +94,7 @@ function SpotlightCard({
         )}
       </h2>
       {meta ? (
-        <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-ivory-light/60">
+        <p className="mt-3 text-sm text-ivory-light/60">
           {meta}
         </p>
       ) : null}

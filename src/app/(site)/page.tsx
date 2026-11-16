@@ -131,7 +131,7 @@ export default async function HomePage() {
               </h2>
               <Link
                 href="/stories"
-                className="font-mono text-[11px] uppercase tracking-[0.18em] text-camel hover:text-midnight"
+                className="text-sm font-semibold text-camel hover:text-midnight"
               >
                 All stories →
               </Link>
@@ -158,7 +158,7 @@ export default async function HomePage() {
             </h2>
             <Link
               href="/podcast"
-              className="font-mono text-[11px] uppercase tracking-[0.18em] text-camel hover:text-midnight"
+              className="text-sm font-semibold text-camel hover:text-midnight"
             >
               All episodes →
             </Link>

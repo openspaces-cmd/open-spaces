@@ -39,10 +39,10 @@ export default async function ArticlesPage() {
           />
           <div className="mx-auto max-w-3xl">
             <div className="flex items-center gap-3">
-              <span className="eyebrow text-camel">
+              <span className="tag text-camel">
                 {lead.category || "Featured"}
               </span>
-              <span className="font-mono text-[11px] uppercase tracking-widest text-ivory-light/60">
+              <span className="text-sm text-ivory-light/60">
                 Latest
               </span>
             </div>
@@ -60,7 +60,7 @@ export default async function ArticlesPage() {
               ) : (
                 <span />
               )}
-              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-camel">
+              <span className="text-sm font-semibold text-camel">
                 Read the article →
               </span>
             </div>

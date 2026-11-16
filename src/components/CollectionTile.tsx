@@ -20,7 +20,7 @@ export function CollectionTile({
       <p className="mt-3 max-w-xs text-sm leading-relaxed text-charcoal">
         {collection.blurb}
       </p>
-      <span className="mt-auto inline-block pt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-camel transition-colors group-hover:text-midnight">
+      <span className="mt-auto inline-block pt-6 text-sm font-semibold text-camel transition-colors group-hover:text-midnight">
         {collection.count} episode{collection.count === 1 ? "" : "s"} →
       </span>
     </Link>

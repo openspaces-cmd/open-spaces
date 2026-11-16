@@ -48,7 +48,7 @@ export function StartHere({ episodes }: { episodes?: EpisodeListItem[] }) {
                       {ep.excerpt}
                     </p>
                   ) : null}
-                  <span className="mt-auto pt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-camel">
+                  <span className="mt-auto pt-2 text-sm font-semibold text-camel">
                     {i === 0 ? "Begin here →" : `Part ${i + 1} →`}
                   </span>
                 </div>

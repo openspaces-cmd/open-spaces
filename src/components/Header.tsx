@@ -76,7 +76,7 @@ export function Header({ nav }: { nav: NavItem[] }) {
               <Link
                 href="/give"
                 onClick={() => setOpen(false)}
-                className="eyebrow text-camel"
+                className="text-base font-medium tracking-[0.04em] text-camel"
               >
                 Give
               </Link>

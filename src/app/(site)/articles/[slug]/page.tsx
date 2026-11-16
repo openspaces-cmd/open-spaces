@@ -89,7 +89,7 @@ export default async function ArticlePage(props: PageProps<"/articles/[slug]">) 
     <article className="mx-auto max-w-3xl px-5 py-12 lg:px-8 lg:py-16">
       <Link
         href="/articles"
-        className="eyebrow text-charcoal transition-colors hover:text-camel"
+        className="backlink text-charcoal transition-colors hover:text-camel"
       >
         ← All articles
       </Link>
@@ -97,14 +97,14 @@ export default async function ArticlePage(props: PageProps<"/articles/[slug]">) 
       <header className="mt-6">
         <div className="flex flex-wrap items-center gap-3">
           {article.category ? (
-            <span className="eyebrow text-camel">{article.category}</span>
+            <span className="tag text-camel">{article.category}</span>
           ) : null}
           {date ? (
-            <span className="font-mono text-[11px] uppercase tracking-widest text-stormy">
+            <span className="text-sm text-stormy">
               {date}
             </span>
           ) : null}
-          <span className="font-mono text-[11px] uppercase tracking-widest text-stormy">
+          <span className="text-sm text-stormy">
             {minutes} min read
           </span>
         </div>
@@ -142,7 +142,7 @@ export default async function ArticlePage(props: PageProps<"/articles/[slug]">) 
             <h2 className="font-display text-3xl text-midnight">Keep Reading</h2>
             <Link
               href="/articles"
-              className="font-mono text-[11px] uppercase tracking-[0.18em] text-camel hover:text-midnight"
+              className="text-sm font-semibold text-camel hover:text-midnight"
             >
               View all →
             </Link>
