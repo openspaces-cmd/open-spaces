@@ -20,7 +20,6 @@
   /* Type families (CSS vars set by next/font in layout.tsx) */
   --font-display: var(--font-display-src), "Arial Narrow", sans-serif;
   --font-body: var(--font-body-src), system-ui, sans-serif;
-  --font-mono: var(--font-mono-src), ui-monospace, monospace;
 }
 
 /* NOTE: no global `scroll-behavior: smooth` on <html>. It makes the App
