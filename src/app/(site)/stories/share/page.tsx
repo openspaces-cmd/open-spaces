@@ -14,7 +14,7 @@ export default function ShareStoryPage() {
     <section className="mx-auto max-w-3xl px-5 py-16 lg:px-8 lg:py-24">
       <Link
         href="/stories"
-        className="eyebrow text-charcoal transition-colors hover:text-camel"
+        className="backlink text-charcoal transition-colors hover:text-camel"
       >
         ← All stories
       </Link>
@@ -33,7 +33,8 @@ export default function ShareStoryPage() {
       </p>
 
       <p className="mt-6 max-w-xl rounded-2xl bg-ivory-light p-5 text-sm leading-relaxed text-charcoal ring-1 ring-tan/70">
-        <span className="font-semibold text-midnight">A quick note:</span> We
+        <span className="font-semibold text-midnight">A quick note:</span>{" "}
+        We
         read every story, but we may not be able to respond to each one
         personally. We&apos;re so grateful you would share yours to help
         others.

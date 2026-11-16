@@ -14,7 +14,7 @@ export default function GuestApplicationPage() {
     <section className="mx-auto max-w-3xl px-5 py-16 lg:px-8 lg:py-24">
       <Link
         href="/podcast"
-        className="eyebrow text-charcoal transition-colors hover:text-camel"
+        className="backlink text-charcoal transition-colors hover:text-camel"
       >
         ← The Podcast
       </Link>

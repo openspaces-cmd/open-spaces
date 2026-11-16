@@ -119,7 +119,7 @@ export default async function DonorsPage({
   if (!isDonorReportConfigured()) {
     return (
       <Notice title="Connect HubSpot">
-        Add a HubSpot private app token as <code>HUBSPOT_PRIVATE_APP_TOKEN</code>{" "}
+        Add a HubSpot Service Key as <code>HUBSPOT_SERVICE_KEY</code>{" "}
         in Vercel (read access to contacts, commerce payments and
         subscriptions) to load giving data.
       </Notice>
@@ -136,7 +136,7 @@ export default async function DonorsPage({
     console.error("[donors] report failed:", err);
     return (
       <Notice title="Couldn't load giving data">
-        HubSpot returned an error. Check that the private app token is valid and
+        HubSpot returned an error. Check that the Service Key is valid and
         has read access to contacts, commerce payments and subscriptions.
         <pre className="mt-4 whitespace-pre-wrap text-xs text-stormy">
           {String(err instanceof Error ? err.message : err).slice(0, 400)}

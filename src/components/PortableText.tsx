@@ -74,7 +74,7 @@ const components: PortableTextComponents = {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={url} alt={value?.alt || ""} className="w-full rounded-2xl" />
           {value?.caption ? (
-            <figcaption className="mt-2 text-center font-mono text-[11px] uppercase tracking-widest text-stormy">
+            <figcaption className="mt-2 text-center text-sm text-stormy">
               {value.caption}
             </figcaption>
           ) : null}

@@ -16,8 +16,7 @@ export default async function ConnectPage() {
 
   return (
     <section className="mx-auto max-w-3xl px-5 py-16 lg:px-8 lg:py-24">
-      <p className="eyebrow text-camel">Connect</p>
-      <h1 className="mt-3 font-display text-6xl text-midnight sm:text-7xl">
+      <h1 className="font-display text-6xl text-midnight sm:text-7xl">
         We&apos;re so glad you&apos;re here!
       </h1>
 

@@ -1,6 +1,6 @@
 // HubSpot Forms submission helper.
 //
-// Posts to the public Forms Submission API — no private app token required.
+// Posts to the public Forms Submission API — no Service Key required.
 // Submissions land in the configured HubSpot portal as contacts, with native
 // dedup and consent handling. Configure via env vars (see .env.local):
 //   HUBSPOT_PORTAL_ID            – the portal/account id (e.g. 48590777)

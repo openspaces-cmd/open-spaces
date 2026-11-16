@@ -20,8 +20,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-5 pt-16 lg:px-8 lg:pt-24">
         <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
           <div>
-            <p className="eyebrow text-camel">About</p>
-            <h1 className="mt-3 font-display text-6xl leading-[0.95] text-midnight sm:text-7xl">
+            <h1 className="font-display text-6xl leading-[0.95] text-midnight sm:text-7xl">
               About Jeff + Jourdan
             </h1>
 
@@ -65,7 +64,8 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="relative lg:sticky lg:top-24">
+          {/* Stacked below lg: cap the width so the 4:5 portrait doesn't fill a tablet screen */}
+          <div className="relative w-full max-w-xs sm:max-w-sm lg:sticky lg:top-24 lg:max-w-none">
             <span
               aria-hidden
               className="absolute -left-3 -top-3 h-12 w-12 border-l-[3px] border-t-[3px] border-camel"

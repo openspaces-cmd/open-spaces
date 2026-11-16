@@ -44,7 +44,7 @@ export function ShareButtons({
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="mr-1 font-mono text-[11px] uppercase tracking-[0.18em] text-stormy">
+      <span className="mr-1 text-sm text-stormy">
         Share
       </span>
       <button type="button" onClick={nativeShare} className={btn}>

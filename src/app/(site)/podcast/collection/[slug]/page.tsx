@@ -61,7 +61,7 @@ export default async function CollectionPage(
       <section className="mx-auto max-w-5xl px-5 py-16 lg:px-8 lg:py-24">
         <Link
           href="/podcast"
-          className="eyebrow text-charcoal transition-colors hover:text-camel"
+          className="backlink text-charcoal transition-colors hover:text-camel"
         >
           ← All episodes
         </Link>
@@ -140,7 +140,7 @@ function CollectionRow({
             {String(index + 1).padStart(2, "0")}
           </span>
         ) : date ? (
-          <span className="font-mono text-[11px] uppercase tracking-widest text-stormy">
+          <span className="text-sm text-stormy">
             {date}
           </span>
         ) : null}

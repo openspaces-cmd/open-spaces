@@ -35,7 +35,7 @@ export function StoryCard({ story }: { story: StoryItem }) {
         “
       </span>
       {story.title ? (
-        <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-camel">
+        <p className="tag mt-1 text-camel">
           {story.title}
         </p>
       ) : null}
@@ -53,7 +53,7 @@ export function StoryCard({ story }: { story: StoryItem }) {
         </span>
         <Link
           href={`/stories/${story._id}`}
-          className={`shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors ${
+          className={`shrink-0 text-sm font-semibold transition-colors ${
             dark ? "text-camel hover:text-ivory-light" : "text-camel hover:text-midnight"
           }`}
         >

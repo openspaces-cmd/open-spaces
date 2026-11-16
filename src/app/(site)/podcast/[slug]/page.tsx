@@ -103,7 +103,7 @@ export default async function EpisodePage(
     <article className="mx-auto max-w-4xl px-5 py-12 lg:px-8 lg:py-16">
       <Link
         href="/podcast"
-        className="eyebrow text-charcoal transition-colors hover:text-camel"
+        className="backlink text-charcoal transition-colors hover:text-camel"
       >
         ← All episodes
       </Link>
@@ -111,19 +111,19 @@ export default async function EpisodePage(
       <header className="mt-6">
         <div className="flex flex-wrap items-center gap-3">
           {episode.episodeNumber ? (
-            <span className="eyebrow text-camel">
+            <span className="tag text-camel">
               Episode {episode.episodeNumber}
             </span>
           ) : null}
           {date ? (
-            <span className="font-mono text-[11px] uppercase tracking-widest text-stormy">
+            <span className="text-sm text-stormy">
               {date}
             </span>
           ) : null}
           {episode.series ? (
             <Link
               href={collectionHref(seriesSlug(episode.series))}
-              className="rounded-full border border-camel px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-camel transition-colors hover:bg-camel hover:text-ivory-light"
+              className="rounded-full border border-camel px-3 py-1 text-xs font-semibold text-camel transition-colors hover:bg-camel hover:text-ivory-light"
             >
               {episode.series} Series
             </Link>
@@ -198,7 +198,7 @@ export default async function EpisodePage(
                   ? collectionHref(upNextCollection.slug)
                   : "/podcast"
               }
-              className="font-mono text-[11px] uppercase tracking-[0.18em] text-camel hover:text-midnight"
+              className="text-sm font-semibold text-camel hover:text-midnight"
             >
               View all →
             </Link>
