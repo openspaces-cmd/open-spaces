@@ -5,11 +5,11 @@
 // This module pulls a year of payments, joins them to their contacts (name,
 // email, mailing address), and rolls them up per donor.
 //
-// Requires a HubSpot private app token in HUBSPOT_PRIVATE_APP_TOKEN with read
+// Requires a HubSpot Service Key in HUBSPOT_SERVICE_KEY with read
 // scopes for contacts, commerce payments and subscriptions. Server-only.
 
 const API = "https://api.hubapi.com";
-const token = () => process.env.HUBSPOT_PRIVATE_APP_TOKEN || "";
+const token = () => process.env.HUBSPOT_SERVICE_KEY || "";
 
 export const isDonorReportConfigured = () => token() !== "";
 
