@@ -96,7 +96,7 @@ export default async function DonorsPage({
     return (
       <Notice title="Donor Report">
         <form action={login} className="flex flex-col gap-3">
-          <label htmlFor="password" className="font-mono text-[11px] uppercase tracking-[0.18em] text-stormy">
+          <label htmlFor="password" className="text-sm font-medium text-midnight">
             Password
           </label>
           <input
@@ -108,7 +108,7 @@ export default async function DonorsPage({
             className="w-full rounded-sm border border-tan bg-ivory px-4 py-3 text-sm text-midnight focus:border-camel focus:outline-none"
           />
           {params.error ? <p className="text-sm text-red-700">That password didn&apos;t match.</p> : null}
-          <button className="mt-2 self-start rounded-sm bg-camel px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light hover:bg-camel/85">
+          <button className="mt-2 self-start rounded-sm bg-camel px-6 py-3 text-sm font-semibold text-ivory-light hover:bg-camel/85">
             View report
           </button>
         </form>
@@ -169,7 +169,7 @@ export default async function DonorsPage({
               <Link
                 key={y}
                 href={`/donors?year=${y}`}
-                className={`rounded-sm px-3 py-1.5 font-mono text-xs ${y === year ? "bg-midnight text-ivory-light" : "text-charcoal hover:text-camel"}`}
+                className={`rounded-sm px-3 py-1.5 text-sm font-medium ${y === year ? "bg-midnight text-ivory-light" : "text-charcoal hover:text-camel"}`}
               >
                 {y}
               </Link>
@@ -177,18 +177,18 @@ export default async function DonorsPage({
           </nav>
           <a
             href={`/donors/export?year=${year}&type=donors`}
-            className="rounded-sm bg-camel px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-ivory-light hover:bg-camel/85"
+            className="rounded-sm bg-camel px-4 py-2.5 text-sm font-semibold text-ivory-light hover:bg-camel/85"
           >
             Year-end CSV
           </a>
           <a
             href={`/donors/export?year=${year}&type=gifts`}
-            className="rounded-sm border border-midnight/30 px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-midnight hover:border-camel hover:text-camel"
+            className="rounded-sm border border-midnight/30 px-4 py-2.5 text-sm font-semibold text-midnight hover:border-camel hover:text-camel"
           >
             All gifts CSV
           </a>
           <form action={logout}>
-            <button className="px-2 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-stormy hover:text-midnight">
+            <button className="px-2 py-2.5 text-sm font-semibold text-stormy hover:text-midnight">
               Sign out
             </button>
           </form>
@@ -198,14 +198,14 @@ export default async function DonorsPage({
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {tiles.map((t) => (
           <div key={t.label} className="rounded-2xl bg-ivory-light p-5 ring-1 ring-tan/70">
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-stormy">{t.label}</p>
+            <p className="text-sm font-medium text-midnight">{t.label}</p>
             <p className="mt-2 text-2xl font-semibold text-midnight tabular-nums">{t.value}</p>
           </div>
         ))}
       </div>
 
       <section className="mt-8 rounded-2xl bg-ivory-light p-5 ring-1 ring-tan/70">
-        <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-stormy">Given by month</h2>
+        <h2 className="text-sm font-medium text-midnight">Given by month</h2>
         <div className="mt-4 grid grid-cols-12 items-end gap-2" style={{ height: 140 }}>
           {totals.byMonth.map((amt, i) => (
             <div key={i} className="flex h-full flex-col justify-end" title={`${MONTHS[i]}: ${usd(amt)}`}>
@@ -213,7 +213,7 @@ export default async function DonorsPage({
             </div>
           ))}
         </div>
-        <div className="mt-2 grid grid-cols-12 gap-2 text-center font-mono text-[10px] text-stormy">
+        <div className="mt-2 grid grid-cols-12 gap-2 text-center text-[11px] text-stormy">
           {MONTHS.map((m) => (
             <span key={m}>{m}</span>
           ))}
@@ -222,7 +222,7 @@ export default async function DonorsPage({
 
       <section className="mt-8 overflow-x-auto rounded-2xl bg-ivory-light ring-1 ring-tan/70">
         <table className="w-full min-w-[960px] text-left text-sm">
-          <thead className="border-b border-tan/70 font-mono text-[10px] uppercase tracking-[0.16em] text-stormy">
+          <thead className="border-b border-tan/70 text-xs font-semibold text-stormy">
             <tr>
               <th className="px-4 py-3">Donor</th>
               <th className="px-4 py-3">Mailing address</th>
@@ -252,7 +252,7 @@ export default async function DonorsPage({
                   </td>
                   <td className="px-4 py-3">
                     <span
-                      className={`rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider ${
+                      className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
                         d.frequency === "Monthly"
                           ? "bg-midnight text-ivory-light"
                           : d.frequency === "Repeat"

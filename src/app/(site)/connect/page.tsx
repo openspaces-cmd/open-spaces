@@ -29,13 +29,13 @@ export default async function ConnectPage() {
       <div className="mt-10 flex flex-wrap gap-3">
         <a
           href={`mailto:${email}`}
-          className="rounded-sm bg-camel px-7 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+          className="rounded-sm bg-camel px-7 py-3.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
         >
           Contact Us
         </a>
         <Link
           href="/stories/share"
-          className="rounded-sm border border-midnight/30 px-7 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-midnight transition-colors hover:border-camel hover:text-camel"
+          className="rounded-sm border border-midnight/30 px-7 py-3.5 text-sm font-semibold text-midnight transition-colors hover:border-camel hover:text-camel"
         >
           Share Your Story
         </Link>

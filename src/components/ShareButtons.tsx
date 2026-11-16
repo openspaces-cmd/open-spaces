@@ -40,7 +40,7 @@ export function ShareButtons({
     window.open(shareUrl, "_blank", "noopener,noreferrer,width=600,height=500");
 
   const btn =
-    "flex h-9 items-center gap-2 rounded-full border border-tan px-4 font-mono text-[11px] uppercase tracking-[0.14em] text-charcoal transition-colors hover:border-camel hover:text-camel";
+    "flex h-9 items-center gap-2 rounded-full border border-tan px-4 text-sm font-medium text-charcoal transition-colors hover:border-camel hover:text-camel";
 
   return (
     <div className="flex flex-wrap items-center gap-2">

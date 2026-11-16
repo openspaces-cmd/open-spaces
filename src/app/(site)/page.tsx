@@ -86,13 +86,13 @@ export default async function HomePage() {
               <div className="mt-2 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                 <Link
                   href="/podcast"
-                  className="rounded-sm bg-camel px-7 py-3.5 text-center font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+                  className="rounded-sm bg-camel px-7 py-3.5 text-center text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
                 >
                   Start Watching
                 </Link>
                 <Link
                   href="/stories/share"
-                  className="rounded-sm border border-ivory-light/40 px-7 py-3.5 text-center font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:border-camel hover:text-camel"
+                  className="rounded-sm border border-ivory-light/40 px-7 py-3.5 text-center text-sm font-semibold text-ivory-light transition-colors hover:border-camel hover:text-camel"
                 >
                   Share Your Story
                 </Link>
@@ -180,7 +180,7 @@ export default async function HomePage() {
           </p>
           <Link
             href={`mailto:${settings?.contactEmail || "questions@openspacespodcast.com"}`}
-            className="rounded-sm bg-camel px-8 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+            className="rounded-sm bg-camel px-8 py-3.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
           >
             Submit a Question for Q&amp;A
           </Link>

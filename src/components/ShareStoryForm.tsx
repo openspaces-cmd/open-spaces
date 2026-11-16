@@ -7,7 +7,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 const inputClass =
   "w-full rounded-sm border border-tan bg-ivory-light px-4 py-3 text-sm text-midnight placeholder:text-stormy focus:border-camel focus:outline-none";
 const labelClass =
-  "font-mono text-[11px] uppercase tracking-[0.18em] text-stormy";
+  "text-sm font-medium text-midnight";
 
 export function ShareStoryForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -73,7 +73,7 @@ export function ShareStoryForm() {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="location" className={labelClass}>
-            Location <span className="text-stormy/60">(optional)</span>
+            Location <span className="font-normal text-stormy">(optional)</span>
           </label>
           <input id="location" name="location" type="text" maxLength={80} placeholder="Atlanta, GA" className={inputClass} />
         </div>
@@ -81,7 +81,7 @@ export function ShareStoryForm() {
 
       <div className="flex flex-col gap-2">
         <label htmlFor="email" className={labelClass}>
-          Email <span className="text-stormy/60">(optional)</span>
+          Email <span className="font-normal text-stormy">(optional)</span>
         </label>
         <input id="email" name="email" type="email" maxLength={120} placeholder="you@example.com" className={inputClass} />
       </div>
@@ -140,7 +140,7 @@ export function ShareStoryForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="self-start rounded-sm bg-camel px-8 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85 disabled:opacity-60"
+        className="self-start rounded-sm bg-camel px-8 py-3.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85 disabled:opacity-60"
       >
         {status === "submitting" ? "Sending…" : "Send My Story"}
       </button>

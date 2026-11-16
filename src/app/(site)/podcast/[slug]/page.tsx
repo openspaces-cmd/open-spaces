@@ -167,7 +167,7 @@ export default async function EpisodePage(
         </p>
         <a
           href={`mailto:${settings?.contactEmail || "questions@openspacespodcast.com"}`}
-          className="mt-5 inline-block rounded-sm bg-camel px-7 py-3 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+          className="mt-5 inline-block rounded-sm bg-camel px-7 py-3 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
         >
           Submit a Question
         </a>

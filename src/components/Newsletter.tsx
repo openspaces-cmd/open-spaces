@@ -110,7 +110,7 @@ export function Newsletter({
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="self-start rounded-sm bg-camel px-8 py-3 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85 disabled:opacity-60"
+                  className="self-start rounded-sm bg-camel px-8 py-3 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85 disabled:opacity-60"
                 >
                   {status === "submitting" ? "Signing Up…" : "Sign Up"}
                 </button>

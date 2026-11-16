@@ -36,7 +36,9 @@ export async function POST(request: Request) {
       { name: "email", value: email },
       { name: "phone", value: phone },
       { name: "city", value: location },
-      { name: "message", value: [`Groups: ${groups.join(", ")}`, notes].filter(Boolean).join("\n\n") },
+      // Multi-checkbox property: selected option values joined with ";".
+      { name: "group_interest", value: groups.join(";") },
+      { name: "message", value: notes },
     ],
     pageName: "Open Spaces — Groups Waitlist",
   });

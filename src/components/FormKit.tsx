@@ -7,12 +7,12 @@ import { useState } from "react";
 export const inputClass =
   "w-full rounded-sm border border-tan bg-ivory-light px-4 py-3 text-sm text-midnight placeholder:text-stormy focus:border-camel focus:outline-none";
 export const labelClass =
-  "font-mono text-[11px] uppercase tracking-[0.18em] text-stormy";
+  "text-sm font-medium text-midnight";
 
 export type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export function Optional() {
-  return <span className="text-stormy/60">(optional)</span>;
+  return <span className="font-normal text-stormy">(optional)</span>;
 }
 
 export function Field({
@@ -62,7 +62,7 @@ export function SubmitButton({
     <button
       type="submit"
       disabled={status === "submitting"}
-      className="self-start rounded-sm bg-camel px-8 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85 disabled:opacity-60"
+      className="self-start rounded-sm bg-camel px-8 py-3.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85 disabled:opacity-60"
     >
       {status === "submitting" ? busyLabel : label}
     </button>

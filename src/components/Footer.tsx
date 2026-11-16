@@ -16,7 +16,7 @@ const DEFAULT_NAV = [
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="font-mono text-[11px] uppercase tracking-[0.22em] text-camel">
+    <h3 className="font-display text-3xl text-camel">
       {children}
     </h3>
   );
@@ -131,7 +131,7 @@ export function Footer({
           </ul>
           <Link
             href="/connect"
-            className="mt-2 inline-block self-start rounded-sm bg-camel px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+            className="mt-2 inline-block self-start rounded-sm bg-camel px-5 py-2.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
           >
             Let’s Connect
           </Link>
@@ -151,10 +151,10 @@ export function Footer({
       {/* Bottom bar */}
       <div className="border-t border-ivory-light/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left lg:px-8">
-          <p className="font-mono text-[11px] uppercase tracking-widest text-ivory-light/50">
+          <p className="text-xs text-ivory-light/50">
             © {year} Open Spaces Collective
           </p>
-          <p className="font-mono text-[11px] uppercase tracking-widest text-ivory-light/50">
+          <p className="text-xs text-ivory-light/50">
             Sharing stories with vulnerability &amp; belief for the impossible
           </p>
         </div>

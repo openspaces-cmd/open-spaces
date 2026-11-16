@@ -16,7 +16,7 @@ const HIDDEN_SERIES = ["Community"];
 const HIDDEN_TAGS = ["faith"];
 
 const chipBase =
-  "rounded-full border px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors";
+  "rounded-full border px-4 py-1.5 text-sm font-medium capitalize transition-colors";
 const chipOff = `${chipBase} border-tan text-charcoal hover:border-camel hover:text-camel`;
 const chipOn = `${chipBase} border-camel bg-camel text-ivory-light`;
 
