@@ -45,10 +45,12 @@ export function Newsletter({
   }
 
   return (
-    <section className="relative overflow-hidden">
-      {/* Desert band behind the card. Real photo via Sanity; warm sand gradient otherwise. */}
+    <section className="relative isolate overflow-hidden">
+      {/* Desert band behind the card, filling the whole block so no strip of
+          page background shows above it whatever section comes first. Real
+          photo via Sanity; steel-to-sand gradient otherwise. */}
       <div
-        className="absolute inset-x-0 bottom-0 top-28 bg-gradient-to-b from-steel/30 via-tan to-camel/40 bg-cover bg-center"
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-steel/30 via-tan to-camel/40 bg-cover bg-center"
         style={
           backgroundImageUrl
             ? { backgroundImage: `url(${backgroundImageUrl})` }
@@ -57,7 +59,7 @@ export function Newsletter({
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-6xl px-5 pb-32 pt-12 lg:px-8">
+      <div className="relative mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
         <div className="bg-ivory-light px-7 py-12 shadow-[0_24px_60px_-30px_rgba(29,37,45,0.5)] sm:px-12">
           <div className="grid gap-8 md:grid-cols-2 md:items-center">
             <div>

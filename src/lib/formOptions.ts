@@ -4,8 +4,6 @@
 export const GROUP_OPTIONS = [
   "Women's group",
   "Men's group",
-  "Parents' group",
-  "Not sure yet — tell me what's coming",
 ] as const;
 
 export const GUEST_TOPICS = [
