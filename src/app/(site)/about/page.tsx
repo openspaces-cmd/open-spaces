@@ -64,7 +64,8 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="relative lg:sticky lg:top-24">
+          {/* Stacked below lg: cap the width so the 4:5 portrait doesn't fill a tablet screen */}
+          <div className="relative w-full max-w-xs sm:max-w-sm lg:sticky lg:top-24 lg:max-w-none">
             <span
               aria-hidden
               className="absolute -left-3 -top-3 h-12 w-12 border-l-[3px] border-t-[3px] border-camel"
