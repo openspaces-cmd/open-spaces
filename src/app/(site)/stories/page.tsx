@@ -63,9 +63,9 @@ export default async function StoriesPage() {
               Your story isn&apos;t over
             </h2>
             <p className="max-w-md text-sm leading-relaxed text-ivory-light/80">
-              Whatever you&apos;ve walked through, telling the truth about it is
-              the first step. Share it with us — publicly, anonymously, or just
-              between us.
+              Whatever you&apos;ve walked through, someone out there needs to
+              hear that they&apos;re not alone. Share your story to help
+              others. You can use your name or stay anonymous.
             </p>
             <Link
               href="/stories/share"

@@ -7,12 +7,15 @@ import { homePage } from "./homePage";
 import { page } from "./page";
 import { siteSettings } from "./siteSettings";
 import { story } from "./story";
+import { groupWaitlist, guestApplication } from "./submissions";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   homePage,
   episode,
   article,
   story,
+  groupWaitlist,
+  guestApplication,
   guest,
   page,
   siteSettings,

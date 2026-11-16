@@ -51,10 +51,12 @@ export function ShareStoryForm() {
   if (status === "success") {
     return (
       <div className="rounded-2xl bg-midnight p-8 text-center text-ivory-light sm:p-12">
-        <p className="font-display text-4xl">We received your story</p>
+        <p className="font-display text-4xl">Thank you for sharing</p>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ivory-light/80">
-          Thank you for trusting us with it. Every story is read by Jeff &amp;
-          Jourdan&apos;s team. Nothing is ever shared without your permission.
+          Your courage could be exactly what someone else needs. Every story is
+          read by Jeff &amp; Jourdan&apos;s team. We may not be able to respond
+          to each one personally, but we&apos;re so grateful you shared yours
+          to help others. Nothing is ever shared without your permission.
         </p>
       </div>
     );
@@ -94,7 +96,7 @@ export function ShareStoryForm() {
           required
           rows={8}
           maxLength={5000}
-          placeholder="Wherever it starts — start there. Take your time."
+          placeholder="What happened, what helped, and what you’d want someone in your shoes to know. Take your time."
           className={inputClass}
         />
       </div>
@@ -113,15 +115,17 @@ export function ShareStoryForm() {
         <legend className="sr-only">Sharing permissions</legend>
         <label className="flex items-start gap-3 text-sm text-charcoal">
           <input type="checkbox" name="mayShare" className="mt-1 accent-[#bf8b3e]" />
-          You may share my story on the Open Spaces website or podcast.
+          You may share my story on the Open Spaces website or podcast to
+          help others.
         </label>
         <label className="flex items-start gap-3 text-sm text-charcoal">
           <input type="checkbox" name="anonymous" className="mt-1 accent-[#bf8b3e]" />
           If you share it, please keep me anonymous.
         </label>
         <p className="text-xs leading-relaxed text-stormy">
-          Unchecked? Then your story stays just between us — it is never shared
-          without your explicit permission.
+          Sharing is how your story reaches someone who needs it — but
+          it&apos;s always your choice. Leave the first box unchecked and your
+          story stays just between us.
         </p>
       </fieldset>
 
