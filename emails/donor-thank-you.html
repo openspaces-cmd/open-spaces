@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<!--
+  Open Spaces — Donor thank-you email (hand-coded, client-safe HTML)
+  Rebuilt from HubSpot "OSP // Donor Thank You Email // Automated".
+
+  Merge fields (replace before sending):
+    {{first_name}}   donor first name; fall back to "friend" when blank
+    {{gift_amount}}  formatted amount, e.g. "$50.00"
+    {{gift_date}}    formatted date, e.g. "November 16, 2026"
+
+  Images are served from the website at /email/ (public/email in the repo).
+  Design is dark-first (midnight + ivory), which is the most stable choice
+  when Gmail / Outlook apply their own dark modes.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>Thank you for your gift to Open Spaces</title>
+
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<style>
+  table, td, p, a, span, li { font-family: Arial, Helvetica, sans-serif !important; }
+</style>
+<![endif]-->
+
+<!--[if !mso]><!-->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<!--<![endif]-->
+
+<style>
+  :root { color-scheme: light dark; supported-color-schemes: light dark; }
+
+  html, body { margin: 0 !important; padding: 0 !important; height: 100% !important; width: 100% !important; }
+  * { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+  table, td { mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !important; }
+  table { border-spacing: 0 !important; border-collapse: collapse !important; }
+  img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+  a { text-decoration: none; }
+  a[x-apple-data-detectors], .unstyle-auto-detected-links a { color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
+  u + #body a { color: inherit; text-decoration: none; font-size: inherit; font-family: inherit; font-weight: inherit; line-height: inherit; }
+  #MessageViewBody a { color: inherit; text-decoration: none; font-size: inherit; font-family: inherit; font-weight: inherit; line-height: inherit; }
+
+  /* Phones */
+  @media screen and (max-width: 620px) {
+    .container { width: 100% !important; }
+    .px { padding-left: 24px !important; padding-right: 24px !important; }
+    .body-copy { font-size: 16px !important; line-height: 26px !important; }
+    .stack { display: block !important; width: 100% !important; text-align: left !important; }
+    .stack-gap { padding-top: 10px !important; }
+    .fluid { width: 100% !important; max-width: 100% !important; height: auto !important; }
+  }
+
+  /* Dark mode (Apple Mail, iOS Mail, Outlook for Mac, some Android clients).
+     The email is already dark; this only deepens the page behind the card. */
+  @media (prefers-color-scheme: dark) {
+    .page-bg { background-color: #11161b !important; }
+    .card-bg { background-color: #1d252d !important; }
+    .ink { color: #f9f2ea !important; }
+    .muted { color: #bec6c4 !important; }
+    .camel { color: #d4a25a !important; }
+  }
+
+  /* Outlook.com / Outlook app dark mode: keep our own colors */
+  [data-ogsc] .page-bg { background-color: #11161b !important; }
+  [data-ogsc] .ink { color: #f9f2ea !important; }
+  [data-ogsc] .muted { color: #bec6c4 !important; }
+  [data-ogsc] .camel { color: #d4a25a !important; }
+  [data-ogsb] .card-bg { background-color: #1d252d !important; }
+</style>
+</head>
+
+<body id="body" class="page-bg" style="margin:0; padding:0; width:100%; background-color:#f9f2ea; word-spacing:normal;">
+
+  <!-- Preheader: shown in the inbox preview, hidden in the email -->
+  <div style="display:none; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+    Your gift is helping people find hope, freedom and a deeper connection with Jesus.
+    &#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+  </div>
+
+  <div role="article" aria-roledescription="email" aria-label="Thank you for your gift to Open Spaces" lang="en" style="font-size:medium;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="page-bg" style="background-color:#f9f2ea;">
+    <tr>
+      <td align="center" style="padding:24px 12px;">
+
+        <!--[if mso]><table role="presentation" align="center" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+        <table role="presentation" class="container card-bg" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#1d252d;">
+
+          <!-- Header image (headline is part of the artwork; alt text carries it when images are off) -->
+          <tr>
+            <td align="center" style="background-color:#1d252d;">
+              <img src="https://www.theopenspacescollective.com/email/donor-thank-you-header.jpg"
+                   width="600" height="561" class="fluid"
+                   alt="Thank you for your support — Jeff &amp; Jourdan Johnson, Open Spaces Collective"
+                   style="display:block; width:100%; max-width:600px; height:auto; background-color:#1d252d; color:#f9f2ea; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:24px; font-weight:700; line-height:32px; text-align:center;">
+            </td>
+          </tr>
+
+          <!-- Letter -->
+          <tr>
+            <td class="px" style="padding:40px 48px 8px 48px;">
+              <p class="ink body-copy" style="margin:0 0 20px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#f9f2ea;">
+                Hey {{first_name}},
+              </p>
+              <p class="ink body-copy" style="margin:0 0 20px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#f9f2ea;">
+                We just wanted to take a moment to say <strong style="font-weight:700;">thank you</strong> for your generous gift to Open Spaces Collective, Inc. Your support is helping create a space where people who are struggling can find hope, freedom, and a deeper connection with Jesus.
+              </p>
+              <p class="ink body-copy" style="margin:0 0 12px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; font-weight:700; color:#f9f2ea;">
+                Because of you, we&rsquo;re able to:
+              </p>
+            </td>
+          </tr>
+
+          <!-- Bullet list (table-based so bullets align in every client) -->
+          <tr>
+            <td class="px" style="padding:0 48px 8px 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td width="22" valign="top" class="camel" style="padding:0 0 10px 0; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#bf8b3e;">&bull;</td>
+                  <td valign="top" class="ink body-copy" style="padding:0 0 10px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#f9f2ea;">Provide resources and support for those navigating this journey</td>
+                </tr>
+                <tr>
+                  <td width="22" valign="top" class="camel" style="padding:0 0 10px 0; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#bf8b3e;">&bull;</td>
+                  <td valign="top" class="ink body-copy" style="padding:0 0 10px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#f9f2ea;">Share stories of transformation and hope</td>
+                </tr>
+                <tr>
+                  <td width="22" valign="top" class="camel" style="padding:0 0 10px 0; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#bf8b3e;">&bull;</td>
+                  <td valign="top" class="ink body-copy" style="padding:0 0 10px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#f9f2ea;">Create content that reaches those searching for truth and healing</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="px" style="padding:12px 48px 0 48px;">
+              <p class="ink body-copy" style="margin:0 0 28px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#f9f2ea;">
+                Your generosity is making a real impact, and we&rsquo;re so grateful to have you alongside us in this mission.
+              </p>
+              <p class="ink body-copy" style="margin:0 0 4px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#f9f2ea;">
+                With gratitude,
+              </p>
+              <p class="ink" style="margin:0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:18px; line-height:26px; font-weight:700; color:#f9f2ea;">
+                Jeff &amp; Jourdan
+              </p>
+              <p class="muted" style="margin:0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#bec6c4;">
+                Open Spaces Collective, Inc.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Gift receipt (doubles as the tax acknowledgment) -->
+          <tr>
+            <td class="px" style="padding:36px 48px 8px 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #3a4652; border-radius:4px;">
+                <tr>
+                  <td style="padding:20px 24px 4px 24px;">
+                    <p class="camel" style="margin:0 0 12px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:13px; line-height:18px; font-weight:700; color:#bf8b3e;">
+                      Your gift
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 24px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td class="muted stack" width="50%" valign="top" style="padding:0 0 8px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#bec6c4;">
+                          Amount<br>
+                          <span class="ink" style="font-size:18px; line-height:26px; font-weight:700; color:#f9f2ea;">{{gift_amount}}</span>
+                        </td>
+                        <td class="muted stack stack-gap" width="50%" valign="top" style="padding:0 0 8px 0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#bec6c4;">
+                          Date<br>
+                          <span class="ink" style="font-size:18px; line-height:26px; font-weight:700; color:#f9f2ea;">{{gift_date}}</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 24px 20px 24px;">
+                    <p class="muted" style="margin:0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height:18px; color:#bec6c4;">
+                      Open Spaces Collective, Inc. is a 501(c)(3) nonprofit organization. No goods or services were provided in exchange for this contribution. Please keep this email for your tax records.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td class="px" style="padding:32px 48px 0 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td style="border-top:1px solid #3a4652; font-size:0; line-height:0; height:1px;">&nbsp;</td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:28px 48px 8px 48px;">
+              <a href="https://www.theopenspacescollective.com" target="_blank" style="display:inline-block;">
+                <img src="https://www.theopenspacescollective.com/email/logo-ivory.png"
+                     width="160" height="36" alt="Open Spaces"
+                     style="display:block; width:160px; height:auto; color:#f9f2ea; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:16px; font-weight:700;">
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:12px 48px 0 48px; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height:24px;">
+              <a href="https://www.theopenspacescollective.com/about" target="_blank" class="ink" style="color:#f9f2ea; font-weight:600; text-decoration:none;">About</a>
+              <span class="muted" style="color:#717879;">&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>
+              <a href="https://www.theopenspacescollective.com/podcast" target="_blank" class="ink" style="color:#f9f2ea; font-weight:600; text-decoration:none;">Podcast</a>
+              <span class="muted" style="color:#717879;">&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>
+              <a href="https://www.theopenspacescollective.com/stories" target="_blank" class="ink" style="color:#f9f2ea; font-weight:600; text-decoration:none;">Stories</a>
+              <span class="muted" style="color:#717879;">&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>
+              <a href="https://www.theopenspacescollective.com/give" target="_blank" class="camel" style="color:#bf8b3e; font-weight:600; text-decoration:none;">Give</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:6px 48px 0 48px; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height:24px;">
+              <a href="https://instagram.com/open.spaces.podcast" target="_blank" class="muted" style="color:#bec6c4; text-decoration:underline;">Instagram</a>
+              <span class="muted" style="color:#717879;">&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>
+              <a href="https://www.tiktok.com/@openspacespodcast" target="_blank" class="muted" style="color:#bec6c4; text-decoration:underline;">TikTok</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:20px 48px 40px 48px;">
+              <p class="muted" style="margin:0; font-family:'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height:18px; color:#bec6c4;">
+                You&rsquo;re receiving this email because you made a gift to Open Spaces Collective, Inc.
+                Questions? Just reply, or write to
+                <a href="mailto:questions@openspacespodcast.com" class="muted" style="color:#bec6c4; text-decoration:underline;">questions@openspacespodcast.com</a>.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!--[if mso]></td></tr></table><![endif]-->
+
+      </td>
+    </tr>
+  </table>
+  </div>
+</body>
+</html>

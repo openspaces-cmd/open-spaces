@@ -1,0 +1,33 @@
+Hey {{first_name}},
+
+We just wanted to take a moment to say thank you for your generous gift to Open Spaces Collective, Inc. Your support is helping create a space where people who are struggling can find hope, freedom, and a deeper connection with Jesus.
+
+Because of you, we're able to:
+
+  - Provide resources and support for those navigating this journey
+  - Share stories of transformation and hope
+  - Create content that reaches those searching for truth and healing
+
+Your generosity is making a real impact, and we're so grateful to have you alongside us in this mission.
+
+With gratitude,
+Jeff & Jourdan
+Open Spaces Collective, Inc.
+
+----------------------------------------
+YOUR GIFT
+Amount: {{gift_amount}}
+Date:   {{gift_date}}
+
+Open Spaces Collective, Inc. is a 501(c)(3) nonprofit organization. No goods or services were provided in exchange for this contribution. Please keep this email for your tax records.
+----------------------------------------
+
+About:   https://www.theopenspacescollective.com/about
+Podcast: https://www.theopenspacescollective.com/podcast
+Stories: https://www.theopenspacescollective.com/stories
+Give:    https://www.theopenspacescollective.com/give
+Instagram: https://instagram.com/open.spaces.podcast
+TikTok:    https://www.tiktok.com/@openspacespodcast
+
+You're receiving this email because you made a gift to Open Spaces Collective, Inc.
+Questions? Just reply, or write to questions@openspacespodcast.com.
