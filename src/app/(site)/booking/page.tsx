@@ -24,7 +24,7 @@ export default async function BookingPage() {
       </p>
       <a
         href={`mailto:${email}?subject=Speaking%20Inquiry`}
-        className="mt-8 inline-block rounded-full bg-camel px-7 py-3 font-mono text-xs uppercase tracking-widest text-ivory-light transition-colors hover:bg-camel/85"
+        className="mt-8 inline-block rounded-full bg-camel px-7 py-3 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
       >
         Request booking
       </a>

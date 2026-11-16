@@ -111,7 +111,7 @@ export default async function StoryPage(props: PageProps<"/stories/[id]">) {
           </h2>
           <Link
             href="/stories/share"
-            className="rounded-sm bg-camel px-8 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+            className="rounded-sm bg-camel px-8 py-3.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
           >
             Share Your Story
           </Link>

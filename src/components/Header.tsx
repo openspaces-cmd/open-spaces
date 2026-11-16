@@ -30,7 +30,7 @@ export function Header({ nav }: { nav: NavItem[] }) {
         <div className="flex items-center gap-4">
           <Link
             href="/give"
-            className="hidden rounded-sm bg-camel px-6 py-2.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85 sm:inline-block"
+            className="hidden rounded-sm bg-camel px-6 py-2.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85 sm:inline-block"
           >
             Give
           </Link>

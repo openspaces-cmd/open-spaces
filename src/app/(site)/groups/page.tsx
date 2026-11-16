@@ -52,7 +52,7 @@ export default function GroupsPage() {
             </div>
             <a
               href="#waitlist"
-              className="mt-10 inline-block rounded-sm bg-camel px-8 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+              className="mt-10 inline-block rounded-sm bg-camel px-8 py-3.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
             >
               Join the Waitlist
             </a>

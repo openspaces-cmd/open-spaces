@@ -108,7 +108,7 @@ function SpotlightCard({
         {href ? (
           <Link
             href={href}
-            className="inline-block rounded-sm bg-camel px-7 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+            className="inline-block rounded-sm bg-camel px-7 py-3.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
           >
             {cta}
           </Link>
@@ -116,7 +116,7 @@ function SpotlightCard({
           <button
             type="button"
             onClick={onPlay}
-            className="inline-block rounded-sm bg-camel px-7 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+            className="inline-block rounded-sm bg-camel px-7 py-3.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
           >
             {cta}
           </button>

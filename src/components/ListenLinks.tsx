@@ -28,7 +28,7 @@ export function ListenLinks({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-midnight/20 px-4 py-2 font-mono text-xs uppercase tracking-widest text-midnight transition-colors hover:border-camel hover:text-camel"
+            className="rounded-full border border-midnight/20 px-4 py-2 text-sm font-semibold text-midnight transition-colors hover:border-camel hover:text-camel"
           >
             {label}
           </a>

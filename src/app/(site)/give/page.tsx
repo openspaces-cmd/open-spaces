@@ -54,7 +54,7 @@ export default function GivePage() {
                   href={ONE_TIME_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-sm bg-camel px-8 py-3.5 text-center font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+                  className="rounded-sm bg-camel px-8 py-3.5 text-center text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
                 >
                   One Time Gift
                 </a>
@@ -62,7 +62,7 @@ export default function GivePage() {
                   href={MONTHLY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-sm border border-ivory-light/40 px-8 py-3.5 text-center font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:border-camel hover:text-camel"
+                  className="rounded-sm border border-ivory-light/40 px-8 py-3.5 text-center text-sm font-semibold text-ivory-light transition-colors hover:border-camel hover:text-camel"
                 >
                   Monthly Giving
                 </a>
@@ -133,7 +133,7 @@ export default function GivePage() {
             href={ONE_TIME_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-sm bg-camel px-8 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-ivory-light transition-colors hover:bg-camel/85"
+            className="rounded-sm bg-camel px-8 py-3.5 text-sm font-semibold text-ivory-light transition-colors hover:bg-camel/85"
           >
             One Time Gift
           </a>
@@ -141,7 +141,7 @@ export default function GivePage() {
             href={MONTHLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-sm border border-midnight/30 px-8 py-3.5 font-mono text-xs uppercase tracking-[0.18em] text-midnight transition-colors hover:border-camel hover:text-camel"
+            className="rounded-sm border border-midnight/30 px-8 py-3.5 text-sm font-semibold text-midnight transition-colors hover:border-camel hover:text-camel"
           >
             Monthly Giving
           </a>

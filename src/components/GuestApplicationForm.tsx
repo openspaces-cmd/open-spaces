@@ -114,7 +114,7 @@ export function GuestApplicationForm() {
       </Field>
 
       <fieldset className="flex flex-col gap-3">
-        <legend className={labelClass}>What would you want to talk about? <span className="text-stormy/60">(pick any)</span></legend>
+        <legend className={labelClass}>What would you want to talk about? <span className="font-normal text-stormy">(pick any)</span></legend>
         <div className="mt-2 grid gap-2 sm:grid-cols-2">
           {GUEST_TOPICS.map((opt) => (
             <label key={opt} className="flex items-start gap-3 text-sm text-charcoal">

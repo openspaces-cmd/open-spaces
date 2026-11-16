@@ -17,7 +17,7 @@ export function ImagePlaceholder({
     >
       <CircularLogo size={sealSize} className="text-ivory-light/10" />
       {label ? (
-        <span className="absolute bottom-5 left-5 font-mono text-[11px] uppercase tracking-[0.18em] text-ivory-light/40">
+        <span className="absolute bottom-5 left-5 text-sm font-semibold text-ivory-light/40">
           {label}
         </span>
       ) : null}
